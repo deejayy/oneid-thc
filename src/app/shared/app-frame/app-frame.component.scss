@@ -10,13 +10,23 @@
   &-table {
     width: 100%;
 
-    & ::ng-deep .mat-header-cell {
-      color: $font-color;
+    & ::ng-deep {
+      .mat-header-cell {
+        color: $font-color;
+      }
+
+      .mat-row:hover {
+        background-color: $theme-color;
+
+        td {
+          color: $white;
+        }
+      }
     }
   }
 
   &-controls {
-    margin-top: 16px;
+    margin: 16px 0;
   }
 
   &-button-label {
