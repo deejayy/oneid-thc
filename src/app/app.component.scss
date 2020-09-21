@@ -1,5 +1,70 @@
 @import "app-theme.scss";
 
-body {
-  font-family: Roboto, Tahoma, Helvetica, sans-serif;
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  height: 72px;
+  background-color: $theme-color;
+
+  &-wrapper {
+    color: $white;
+    display: flex;
+    flex: 1 1 0;
+    margin: auto 0 auto 16px;
+  }
+
+  &-logo {
+    border-right: 1px solid $theme-color-1;
+    margin-right: 16px;
+
+    img {
+      width: 256px;
+    }
+  }
+
+  &-title {
+    margin: auto 0;
+    letter-spacing: 1px;
+  }
+}
+
+.content {
+  min-height: calc(100vh - 72px);
+  flex: 1 1 0;
+  display: flex;
+}
+
+.navigation {
+  width: calc(256px + 16px + 1px);
+  padding-top: 32px;
+  border-right: 1px solid $border-color;
+
+  &-link {
+    color: $font-color;
+    height: 40px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    text-decoration: none;
+    border: 0 solid currentColor;
+    padding-left: 32px;
+
+    &:hover {
+      background-color: $theme-color-2;
+      color: $white
+    }
+
+    &_active {
+      border-left: 8px solid $theme-color;
+    }
+  }
+}
+
+.main {
+  padding: 32px 32px;
 }

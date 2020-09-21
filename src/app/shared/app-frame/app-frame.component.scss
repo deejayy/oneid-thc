@@ -1,1 +1,9 @@
 @import "app-theme.scss";
+
+.users {
+  &-title {
+    font-size: 28px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+  }
+}

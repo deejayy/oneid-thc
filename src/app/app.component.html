@@ -1,1 +1,22 @@
-<router-outlet></router-outlet>
+<div block="page">
+  <div block="header">
+    <div elem="wrapper">
+      <div elem="logo">
+        <img src="/assets/logo-white-100.png" alt="">
+      </div>
+      <div elem="title">
+        User Management
+      </div>
+    </div>
+  </div>
+  <div block="content">
+    <div block="navigation">
+      <div elem="item">
+        <a elem="link" mod="active" routerLink="/">Users</a>
+      </div>
+    </div>
+    <div block="main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

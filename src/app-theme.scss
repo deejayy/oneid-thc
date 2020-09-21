@@ -1,15 +1,15 @@
 @import "mixins.scss";
 
-$theme-color-1:  hsl(200, 80, 75%);
-$theme-color-2:  hsl(200, 80, 70%);
-$theme-color-3:  hsl(200, 80, 65%);
-$theme-color-4:  hsl(200, 80, 60%);
-$theme-color-5:  hsl(200, 80, 55%);
-$theme-color-6:  hsl(200, 80, 50%);
-$theme-color-7:  hsl(200, 80, 45%);
-$theme-color-8:  hsl(200, 80, 40%);
-$theme-color-9:  hsl(200, 80, 35%);
-$theme-color-10: hsl(200, 80, 30%);
+$theme-color-1:  hsl(194, 96%, 80%);
+$theme-color-2:  hsl(194, 96%, 70%);
+$theme-color-3:  hsl(194, 96%, 60%);
+$theme-color-4:  hsl(194, 96%, 50%);
+$theme-color-5:  hsl(194, 96%, 44%);
+$theme-color-6:  hsl(194, 96%, 40%);
+$theme-color-7:  hsl(194, 96%, 35%);
+$theme-color-8:  hsl(194, 96%, 30%);
+$theme-color-9:  hsl(194, 96%, 25%);
+$theme-color-10: hsl(194, 96%, 20%);
 
 $theme-color: $theme-color-5;
 
@@ -39,6 +39,8 @@ $warn-hover: $warn-color-4;
 $warn-pressed: $warn-color-2;
 
 $theme-font: Tahoma, sans-serif;
+$font-color: rgba(32, 32, 32, 0.9);
+$border-color: rgba(32, 32, 32, 0.2);
 
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
