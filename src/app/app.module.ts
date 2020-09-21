@@ -16,7 +16,8 @@ import { ApiCallerModule } from '@deejayy/api-caller';
 import { environment } from '@env/environment';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatCommonModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 BemModule.config({
   separators: ['-', '_', ''],
@@ -32,7 +33,8 @@ BemModule.config({
     AppRoutingModule,
     BemModule,
     MatTableModule,
-    MatCommonModule,
+    MatButtonModule,
+    MatIconModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({

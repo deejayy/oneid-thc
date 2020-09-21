@@ -1,7 +1,10 @@
 <div block="users">
   <div elem="title">Users</div>
   <div elem="controls">
-    add?
+    <button mat-flat-button color="primary">
+      <mat-icon>add</mat-icon>
+      <span elem="button-label">Add</span>
+    </button>
   </div>
   <div elem="list">
     <table elem="table" mat-table [dataSource]="data$ | async">
@@ -24,6 +27,12 @@
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef>Phone</th>
         <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="delete(element.id)"><mat-icon>delete</mat-icon></button>
+        </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
