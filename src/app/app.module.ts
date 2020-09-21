@@ -15,6 +15,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ApiCallerModule } from '@deejayy/api-caller';
 import { environment } from '@env/environment';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatCommonModule } from '@angular/material/core';
+
 BemModule.config({
   separators: ['-', '_', ''],
   modCase: 'kebab',
@@ -28,6 +31,8 @@ BemModule.config({
     BrowserAnimationsModule,
     AppRoutingModule,
     BemModule,
+    MatTableModule,
+    MatCommonModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({
