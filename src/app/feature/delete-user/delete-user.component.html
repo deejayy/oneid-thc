@@ -1,0 +1,10 @@
+<div block="dialog">
+  <h1 mat-dialog-title>Confirm user removal</h1>
+  <div mat-dialog-content>
+    <p>Are you sure you want to delete the user?</p>
+  </div>
+  <div mat-dialog-actions elem="controls">
+    <button mat-flat-button (click)="cancel()" cdkFocusInitial>No</button>
+    <button mat-flat-button [mat-dialog-close]="true" color="warn">Yes</button>
+  </div>
+</div>

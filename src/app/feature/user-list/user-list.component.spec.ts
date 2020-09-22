@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppFrameComponent } from './app-frame.component';
+import { UserListComponent } from './user-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('AppFrameComponent', () => {
-  let component: AppFrameComponent;
-  let fixture: ComponentFixture<AppFrameComponent>;
+describe('UserListComponent', () => {
+  let component: UserListComponent;
+  let fixture: ComponentFixture<UserListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppFrameComponent],
+      declarations: [UserListComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppFrameComponent);
+    fixture = TestBed.createComponent(UserListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,7 +6,7 @@
       <span elem="button-label">Add</span>
     </button>
   </div>
-  <div elem="list">
+  <div elem="list" *ngIf="!(loading$ | async); else loading">
     <table elem="table" mat-table [dataSource]="data$ | async">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>#</th>
@@ -38,4 +38,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+  <ng-template #loading>
+    Loading...
+  </ng-template>
 </div>

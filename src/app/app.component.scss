@@ -21,9 +21,10 @@
   &-logo {
     border-right: 1px solid $theme-color-1;
     margin-right: 16px;
+    width: 200px;
 
     img {
-      width: 256px;
+      height: 40px;
     }
   }
 
@@ -40,7 +41,7 @@
 }
 
 .navigation {
-  width: calc(256px + 16px + 1px);
+  width: calc(200px + 16px);
   padding-top: 32px;
   border-right: 1px solid $border-color;
 

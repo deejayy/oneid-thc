@@ -1,0 +1,9 @@
+@import "app-theme.scss";
+
+.dialog {
+  &-controls {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

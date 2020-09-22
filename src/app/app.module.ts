@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppFrameComponent } from './shared/app-frame/app-frame.component';
+import { UserListComponent } from './feature/user-list/user-list.component';
 
 import { BemModule } from 'angular-bem';
 
@@ -15,10 +15,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ApiCallerModule } from '@deejayy/api-caller';
 import { environment } from '@env/environment';
 
-import { MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-
 BemModule.config({
   separators: ['-', '_', ''],
   modCase: 'kebab',
@@ -26,15 +22,12 @@ BemModule.config({
 });
 
 @NgModule({
-  declarations: [AppComponent, AppFrameComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     BemModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({
