@@ -1,0 +1,30 @@
+<div block="dialog">
+  <h1 mat-dialog-title>Add or Edit User</h1>
+  <div mat-dialog-content>
+    <form block="form" [formGroup]="form" [mod]="{ loading: loading$ | async }">
+      <mat-form-field elem="field" appearance="fill">
+        <mat-label>Name *</mat-label>
+        <input matInput type="text" formControlName="name">
+        <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+          Please fill this field at least.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field elem="field" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="text" formControlName="email">
+      </mat-form-field>
+      <mat-form-field elem="field" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username">
+      </mat-form-field>
+      <mat-form-field elem="field" appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput type="text" formControlName="phone">
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions elem="controls">
+    <button mat-flat-button (click)="cancel()">Cancel</button>
+    <button mat-flat-button (click)="save()" color="accent" cdkFocusInitial>Save</button>
+  </div>
+</div>

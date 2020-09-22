@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiCallerService, ApiCallItem, ApiResultState } from '@deejayy/api-caller';
+import {
+  ApiCallerService,
+  ApiCallItem,
+  ApiResultState,
+} from '@deejayy/api-caller';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { take } from 'rxjs/operators';
+import { ModifyUserComponent } from '../modify-user/modify-user.component';
 
 class DeleteCall {
   public api: string = 'https://jsonplaceholder.typicode.com/';
@@ -43,7 +48,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private apiCallerService: ApiCallerService,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -55,18 +60,56 @@ export class UserListComponent implements OnInit {
 
   public delete(id: number) {
     if (id) {
-      const dialogRef = this.dialog.open(DeleteUserComponent, { width: '250px' });
+      const dialogRef = this.dialog.open(DeleteUserComponent, {
+        width: '250px',
+      });
 
-      dialogRef.afterClosed().pipe(take(1)).subscribe(result => {
+      dialogRef
+        .afterClosed()
+        .pipe(take(1))
+        .subscribe((result) => {
+          if (result) {
+            this.deleteCall = new DeleteCall(id);
+            const result = this.apiCallerService.createApiResults(
+              this.deleteCall
+            );
+            this.apiCallerService.callApi(this.deleteCall);
+            result.success$.pipe(take(1)).subscribe((_) => {
+              this.apiCallerService.callApi(this.apiCall);
+            });
+          }
+        });
+    }
+  }
+
+  public add() {
+    const dialogRef = this.dialog.open(ModifyUserComponent, {
+      disableClose: true,
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((result) => {
         if (result) {
-          this.deleteCall = new DeleteCall(id);
-          const result = this.apiCallerService.createApiResults(this.deleteCall);
-          this.apiCallerService.callApi(this.deleteCall);
-          result.success$.pipe(take(1)).subscribe(_ => {
-            this.apiCallerService.callApi(this.apiCall);
-          });
+          console.log(result);
         }
       });
-    }
+  }
+
+  public edit(id: number) {
+    const dialogRef = this.dialog.open(ModifyUserComponent, {
+      disableClose: true,
+      data: { id },
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((result) => {
+        if (result) {
+          console.log(result);
+        }
+      });
   }
 }

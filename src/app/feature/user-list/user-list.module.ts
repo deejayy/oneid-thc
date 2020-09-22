@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserListComponent } from './user-list.component';
 import { BemModule } from 'angular-bem';
 import { DeleteUserModule } from '../delete-user/delete-user.module';
+import { ModifyUserModule } from '../modify-user/modify-user.module';
 
 @NgModule({
   declarations: [UserListComponent],
@@ -15,6 +16,7 @@ import { DeleteUserModule } from '../delete-user/delete-user.module';
     CommonModule,
     BemModule,
     DeleteUserModule,
+    ModifyUserModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,

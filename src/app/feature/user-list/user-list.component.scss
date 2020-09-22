@@ -18,7 +18,7 @@
       .mat-row:hover {
         background-color: $theme-color;
 
-        td {
+        td, td a {
           color: $white;
         }
       }
