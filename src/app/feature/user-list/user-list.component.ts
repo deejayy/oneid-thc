@@ -47,9 +47,13 @@ export class UserListComponent implements OnInit {
 
   public ngOnInit() {
     this.apiResult = this.apiCallerService.createApiResults(this.apiCall);
-    this.apiCallerService.callApi(this.apiCall);
     this.data$ = this.apiResult.data$;
     this.loading$ = this.apiResult.loading$;
+    this.fetchList();
+  }
+
+  public fetchList() {
+    this.apiCallerService.callApi(this.apiCall);
   }
 
   public delete(id: number) {
@@ -69,7 +73,7 @@ export class UserListComponent implements OnInit {
             );
             this.apiCallerService.callApi(this.deleteCall);
             result.success$.pipe(take(1)).subscribe((_) => {
-              this.apiCallerService.callApi(this.apiCall);
+              this.fetchList();
             });
           }
         });
@@ -98,7 +102,7 @@ export class UserListComponent implements OnInit {
           );
           this.apiCallerService.callApi(this.modifyCall);
           result.success$.pipe(take(1)).subscribe((_) => {
-            this.apiCallerService.callApi(this.apiCall);
+            this.fetchList();
           });
         }
       });
