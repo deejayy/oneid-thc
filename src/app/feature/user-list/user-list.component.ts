@@ -9,7 +9,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { take } from 'rxjs/operators';
 import { ModifyUserComponent } from '../modify-user/modify-user.component';
-import { DeleteCall, UpdateCall, InsertCall, ListCall } from '@app/shared/model/api-catalog';
+import {
+  DeleteCall,
+  UpdateCall,
+  InsertCall,
+  ListCall,
+} from '@app/shared/model/api-catalog';
 
 @Component({
   selector: 'app-user-list',
@@ -85,7 +90,8 @@ export class UserListComponent implements OnInit {
           if (formData.id) {
             this.modifyCall = new UpdateCall(formData.id, formData);
           } else {
-            this.modifyCall = new InsertCall(formData);
+            delete formData.id;
+            this.modifyCall = new InsertCall({ ...formData });
           }
           const result = this.apiCallerService.createApiResults(
             this.modifyCall
