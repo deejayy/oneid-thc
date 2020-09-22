@@ -9,16 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { take } from 'rxjs/operators';
 import { ModifyUserComponent } from '../modify-user/modify-user.component';
-
-class DeleteCall {
-  public api: string = 'https://jsonplaceholder.typicode.com/';
-  public path: string = 'users';
-  public method: string = 'DELETE';
-
-  constructor(id: number) {
-    this.path = `${this.path}/${id}`;
-  }
-}
+import { DeleteCall, UpdateCall, InsertCall, ListCall } from '@app/shared/model/api-catalog';
 
 @Component({
   selector: 'app-user-list',
@@ -26,13 +17,11 @@ class DeleteCall {
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  private apiCall: ApiCallItem = {
-    api: 'https://jsonplaceholder.typicode.com/',
-    path: 'users',
-  };
+  private apiCall: ApiCallItem = new ListCall();
   private apiResult: ApiResultState;
 
   private deleteCall: ApiCallItem;
+  private modifyCall: ApiCallItem;
 
   public data$: Observable<any>;
   public loading$: Observable<boolean>;
@@ -82,22 +71,7 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  public add() {
-    const dialogRef = this.dialog.open(ModifyUserComponent, {
-      disableClose: true,
-    });
-
-    dialogRef
-      .afterClosed()
-      .pipe(take(1))
-      .subscribe((result) => {
-        if (result) {
-          console.log(result);
-        }
-      });
-  }
-
-  public edit(id: number) {
+  public edit(id?: number) {
     const dialogRef = this.dialog.open(ModifyUserComponent, {
       disableClose: true,
       data: { id },
@@ -106,9 +80,20 @@ export class UserListComponent implements OnInit {
     dialogRef
       .afterClosed()
       .pipe(take(1))
-      .subscribe((result) => {
-        if (result) {
-          console.log(result);
+      .subscribe((formData) => {
+        if (formData) {
+          if (formData.id) {
+            this.modifyCall = new UpdateCall(formData.id, formData);
+          } else {
+            this.modifyCall = new InsertCall(formData);
+          }
+          const result = this.apiCallerService.createApiResults(
+            this.modifyCall
+          );
+          this.apiCallerService.callApi(this.modifyCall);
+          result.success$.pipe(take(1)).subscribe((_) => {
+            this.apiCallerService.callApi(this.apiCall);
+          });
         }
       });
   }

@@ -4,16 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiCallItem, ApiResultState, ApiCallerService } from '@deejayy/api-caller';
 import { Observable, Subscription } from 'rxjs';
 import { filter, delay } from 'rxjs/operators';
-
-class GetUserCall {
-  public api: string = 'https://jsonplaceholder.typicode.com/';
-  public path: string = 'users';
-  public method: string = 'GET';
-
-  constructor(id: number) {
-    this.path = `${this.path}/${id}`;
-  }
-}
+import { GetUserCall } from '@app/shared/model/api-catalog';
 
 @Component({
   selector: 'app-modify-user',
@@ -55,7 +46,7 @@ export class ModifyUserComponent implements OnInit, OnDestroy {
       this.data$ = this.apiResult.data$;
       this.loading$ = this.apiResult.loading$;
 
-      this.data$.pipe(filter(data => data && data.id)).subscribe(data => {
+      this.data$.pipe(filter(data => data && data.id && data.name)).subscribe(data => {
         this.form.setValue({
           id: data.id,
           name: data.name,
