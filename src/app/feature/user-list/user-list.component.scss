@@ -7,6 +7,11 @@
     opacity: 0.6;
   }
 
+  &-list {
+    max-width: calc(100vw - 48px);
+    overflow: auto;
+  }
+
   &-table {
     width: 100%;
 
