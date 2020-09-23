@@ -17,7 +17,7 @@ export const TEST_IMPORTS = [
   MatIconModule,
   MatDialogModule,
   MatButtonModule,
-]
+];
 
 @NgModule({
   declarations: [],
@@ -25,7 +25,7 @@ export const TEST_IMPORTS = [
     CommonModule,
     NoopAnimationsModule,
     RouterTestingModule,
-    ... TEST_IMPORTS,
+    ...TEST_IMPORTS,
   ],
   exports: [],
 })

@@ -42,7 +42,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private apiCallerService: ApiCallerService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   public ngOnInit() {
@@ -65,12 +65,10 @@ export class UserListComponent implements OnInit {
       dialogRef
         .afterClosed()
         .pipe(take(1))
-        .subscribe((result) => {
-          if (result) {
+        .subscribe((confirm) => {
+          if (confirm) {
             this.deleteCall = new DeleteCall(id);
-            const result = this.apiCallerService.createApiResults(
-              this.deleteCall
-            );
+            const result = this.apiCallerService.createApiResults(this.deleteCall);
             this.apiCallerService.callApi(this.deleteCall);
             result.success$.pipe(take(1)).subscribe((_) => {
               this.fetchList();
@@ -97,9 +95,7 @@ export class UserListComponent implements OnInit {
             delete formData.id;
             this.modifyCall = new InsertCall({ ...formData });
           }
-          const result = this.apiCallerService.createApiResults(
-            this.modifyCall
-          );
+          const result = this.apiCallerService.createApiResults(this.modifyCall);
           this.apiCallerService.callApi(this.modifyCall);
           result.success$.pipe(take(1)).subscribe((_) => {
             this.fetchList();
