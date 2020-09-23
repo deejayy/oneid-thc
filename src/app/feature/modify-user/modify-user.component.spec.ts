@@ -1,22 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModifyUserComponent } from './modify-user.component';
-import { CommonModule } from '@angular/common';
-import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { BemModule } from 'angular-bem';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
+import {
+  MatDialogRef,
+  MatDialog,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 import { ApiCallerService } from '@deejayy/api-caller';
-import { of } from 'rxjs';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
-const mockApiCallerService = {
-  createApiResults: jest.fn().mockReturnValue({ data$: of(), loading$: of(false) }),
-  callApi: jest.fn(),
-}
-const mockMatDialog = {}
-const mockMatDialogRef = {}
+import {
+  mockApiCallerService,
+  mockMatDialog,
+  mockMatDialogRef,
+} from '@app/test/mock-services';
+import { TestModule, TEST_IMPORTS } from '@app/test/test.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ModifyUserComponent', () => {
   let component: ModifyUserComponent;
@@ -24,7 +21,7 @@ describe('ModifyUserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CommonModule, MatDialogModule, MatButtonModule, BemModule, ReactiveFormsModule, MatInputModule, NoopAnimationsModule],
+      imports: [TestModule, ...TEST_IMPORTS, ReactiveFormsModule],
       declarations: [ModifyUserComponent],
       providers: [
         { provide: ApiCallerService, useValue: mockApiCallerService },
