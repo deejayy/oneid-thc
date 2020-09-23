@@ -11,8 +11,8 @@ import {
   mockApiCallerService,
   mockMatDialog,
   mockMatDialogRef,
-} from '@app/test/mock-services';
-import { TestModule, TEST_IMPORTS } from '@app/test/test.module';
+} from '@test/mock-services';
+import { TestModule, TEST_IMPORTS } from '@test/test.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ModifyUserComponent', () => {

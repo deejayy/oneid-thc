@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeleteUserComponent } from './delete-user.component';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { ApiCallerService } from '@deejayy/api-caller';
-import { mockApiCallerService, mockMatDialog, mockMatDialogRef } from '@app/test/mock-services';
-import { TestModule, TEST_IMPORTS } from '@app/test/test.module';
+import { mockApiCallerService, mockMatDialog, mockMatDialogRef } from '@test/mock-services';
+import { TestModule, TEST_IMPORTS } from '@test/test.module';
 
 describe('DeleteUserComponent', () => {
   let component: DeleteUserComponent;
