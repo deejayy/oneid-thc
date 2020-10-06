@@ -1,4 +1,4 @@
-# Assignment for UI Developer
+# Assignment for UI Developer, OneIdentity take home challenge
 
 Please spend approximately 3-4 hours on this task.  
 Create a responsive single-page application to display and manage a list of users. The application should be able to list, add, update and delete users in a well presented and user-friendly way.  
